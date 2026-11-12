@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="輸入本月業績與工作天數，試算月等效業績及本月總抽成。">
+<title>月等效業績試算系統</title>
+<link rel="stylesheet" href="style.css">
+<script src="calculator.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+<main>
+<header><span class="eyebrow">MONTHLY PERFORMANCE</span><h1>月等效業績試算系統</h1><p>讓每一份努力，都有清楚的計算。</p></header>
+<div class="workspace">
+<section class="card input-card" aria-labelledby="input-title"><div class="section-head"><span class="step">01</span><h2 id="input-title">輸入本月資料</h2></div><p class="subtext">填入實際業績與天數，即可開始試算。</p>
+<form id="calculator" novalidate>
+<label for="sales">本月總業績 <span>（元）</span></label><div class="input-wrap"><span aria-hidden="true">NT$</span><input id="sales" name="sales" type="number" min="0" step="0.01" inputmode="decimal" placeholder="例如 1500000" required></div>
+<label for="consult">本月諮詢點天數</label><div class="input-wrap"><input id="consult" name="consult" type="number" min="1" step="1" inputmode="numeric" placeholder="例如 10" required><span aria-hidden="true">天</span></div>
+<label for="scheduled">本月法定應排班天數</label><div class="input-wrap"><input id="scheduled" name="scheduled" type="number" min="1" step="1" inputmode="numeric" placeholder="例如 20" required><span aria-hidden="true">天</span></div>
+<p class="hint">天數請輸入大於 0 的整數，不接受半天。</p><p id="error" class="error" role="alert"></p>
+<button class="primary" type="submit">開始試算 <span aria-hidden="true">↗</span></button><button type="reset" class="reset">清除重填</button>
+</form></section>
+<section class="card result-card" aria-labelledby="result-title"><div class="section-head"><span class="step">02</span><h2 id="result-title">試算結果</h2></div>
+<div id="result" aria-live="polite" aria-atomic="true"><div class="empty"><div class="empty-icon" aria-hidden="true">＝</div><h3>準備好，開始試算</h3><p>填寫資料並點選「開始試算」，<br>即可查看月等效業績與總抽成。</p></div></div>
+<div class="formula"><span>計算方式</span><p>月等效業績 ＝ 本月總業績<br>÷ 諮詢點天數 × 應排班天數</p></div>
+</section></div>
+<footer>僅供內部計算參考使用<span>金額顯示至整元，採四捨五入。</span></footer>
+</main>
+</body></html>
