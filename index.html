@@ -3,13 +3,38 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="輸入本月業績與工作天數，試算月等效業績及本月總抽成。">
-<title>月等效業績試算系統</title>
+<title>臨時諮詢師業績試算系統｜月等效制｜員工查詢版</title>
 <link rel="stylesheet" href="style.css">
 <script src="calculator.js" defer></script><script src="app.js" defer></script>
-</head>
+<style>:root{--page-bg:#f7f2eb;--hero:linear-gradient(125deg,#f0e5d6,#dfcbb3);--hero-ink:#513d2f;--hero-muted:#7a6655;--edge:#e4d7c7;--role-edge:#c5ad8f;--button:#947252;--button-hover:#795b40;--total:linear-gradient(125deg,#f0e3cf,#e2ceb1);--total-edge:#d6be9b;--total-ink:#513d2f;--total-muted:#766047;--table-head:#dfcbb3;--table-ink:#513d2f}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Microsoft JhengHei",sans-serif;background:var(--page-bg);color:#49382e;background-image:none}
+.suite-header{padding:44px 24px 38px;text-align:center;background:var(--hero);color:var(--hero-ink);border-bottom:1px solid var(--edge)}
+.suite-header .suite-brand{font-size:10px;letter-spacing:3px;color:var(--hero-muted);margin:0 0 14px}
+.suite-header h1{font-family:inherit;font-size:30px;line-height:1.5;letter-spacing:2px;font-weight:600;margin:0 0 12px;color:var(--hero-ink)}
+.suite-header .suite-role{display:inline-block;font-size:12px;letter-spacing:2px;border:1px solid var(--role-edge);padding:6px 16px;border-radius:30px;color:var(--hero-ink);margin:0 0 14px}
+.suite-header .suite-description{font-size:13px;line-height:1.8;letter-spacing:.04em;color:var(--hero-muted);margin:0}
+.page,main{max-width:1080px;margin:0 auto;padding:30px 28px 32px}
+.top-row,.workspace{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:stretch}
+.card{border-radius:20px;padding:28px;background:#fffdf9;border:1px solid var(--edge);box-shadow:0 10px 30px #49382e06}
+.section-label,.section-head{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+.section-label:before{display:none}.section-label span,.section-head h2{font-size:18px;font-weight:600;letter-spacing:0;color:#49382e}
+.suite-step,.step{display:grid;place-items:center;width:30px;height:30px;flex-shrink:0;border:1px solid #d6c2a5;border-radius:50%;font:15px Georgia,serif;color:#937347}
+.fields{gap:0}.field{gap:0}.field label{font-size:14px;font-weight:500;color:#655347;margin:22px 0 10px;letter-spacing:0}
+.field input{height:52px;background:#faf6f0;border-color:#ded1c1;border-radius:10px;font-size:17px;color:#49382e}
+.btn-calc,.primary{height:52px;background:var(--button);color:#fffaf3;border-radius:10px;margin-top:20px;letter-spacing:2px;font-size:15px}
+.btn-calc:hover,.primary:hover{background:var(--button-hover);opacity:1}
+.result-total,.commission{background:var(--total);border:1px solid var(--total-edge);border-radius:12px;padding:20px;display:flex;flex-direction:column;align-items:flex-start;gap:10px}
+.result-total .label,.commission span{font-size:13px;color:var(--total-muted)}
+.result-total .value,.commission strong{font-size:34px;color:var(--total-ink);font-weight:600;overflow-wrap:anywhere}
+.result-row{padding:16px 0}.result-row .label,.result-row .value{font-size:13px}.result-row .label{color:#817163}
+.result-empty{min-height:325px}.result-empty p{font-size:13px;line-height:1.9}.full{margin-top:24px}
+thead tr{background:var(--table-head)}thead th{color:var(--table-ink);padding:14px;font-size:12px}tbody td{padding:12px 14px}
+footer{color:#8a796a;font-size:11px;line-height:1.8}
+@media(max-width:700px){.suite-header{padding:32px 18px 28px}.suite-header h1{font-size:24px;letter-spacing:1px}.page,main{padding:24px 18px}.top-row,.workspace{grid-template-columns:1fr;gap:18px}.card{padding:24px}.result-empty{min-height:220px}}
+</style></head>
 <body>
+<header class="suite-header"><p class="suite-brand">YOURS AESTHETIC MEDICAL CLINIC</p><h1>臨時諮詢師業績試算系統</h1><p class="suite-scheme" style="font-size:16px;letter-spacing:.15em;color:var(--hero-ink);margin:0 0 16px">月等效制</p><p class="suite-role">員工查詢版</p><p class="suite-description">依本月業績與諮詢天數，試算月等效業績及本月總抽成。</p></header>
 <main>
-<header><span class="eyebrow">MONTHLY PERFORMANCE</span><h1>月等效業績試算系統</h1><p class="staff-edition" style="font-size:14px;letter-spacing:.12em;margin:8px 0;">員工查詢版</p><p>讓每一份努力，都有清楚的計算。</p></header>
 <div class="workspace">
 <section class="card input-card" aria-labelledby="input-title"><div class="section-head"><span class="step">01</span><h2 id="input-title">輸入本月資料</h2></div><p class="subtext">填入實際業績與天數，即可開始試算。</p>
 <form id="calculator" novalidate>
